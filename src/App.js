@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { React, useState } from "react";
+import Textarea from "./components/Textarea";
 
 function App() {
+  const [count, setCount] = useState(4);
+
+  // function decrementCount() {
+  //   setCount(count - 1);
+  // } OR the below declaration with use of Arrow function can also work
+  const decrementCount = () => {
+    setCount(count - 1);
+  };
+
+  function incrementCount() {
+    setCount(count + 1);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="App">
+        <button onClick={decrementCount}>-</button>
+        <span>{count}</span>
+        <button onClick={incrementCount}>+</button>
+      </div>
+      <Textarea heading="Enter text" />
+    </>
   );
 }
 
